@@ -8,8 +8,8 @@ const TaskList = () => {
   const fetchTasks = async () => {
     setError(null);
     try {
-      const response = await axios.get("http://localhost:3000/api/tasks", {
-        params: { EmployementID: "12345" }, // Example query parameter if required
+      const response = await axios.get("http://localhost:5000/api/tasks", {
+
       });
       setTasks(response.data);
     } catch (error) {
@@ -20,7 +20,7 @@ const TaskList = () => {
   const handleDelete = async (id) => {
     setError(null);
     try {
-      await axios.delete(`http://localhost:3000/api/tasks/${id}`); // DELETE method
+      await axios.delete(`http://localhost:5000/api/tasks/${id}`); // DELETE method
       alert("Task Deleted!");
       fetchTasks();
     } catch (error) {

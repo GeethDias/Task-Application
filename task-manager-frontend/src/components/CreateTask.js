@@ -10,7 +10,7 @@ const CreateTask = ({ fetchTasks }) => {
     e.preventDefault();
     setError(null); // Clear previous errors
     try {
-      await axios.post("http://localhost:3000/api/tasks/create-tasks", { EmployementID, Content });
+      await axios.post("http://localhost:5000/api/tasks/create-tasks", { EmployementID, Content });
       alert("Task Created Successfully!");
       fetchTasks && fetchTasks(); // Call fetchTasks if provided
       setEmployementID("");

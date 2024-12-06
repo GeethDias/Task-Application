@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 });
 
 // Register routes
-app.use('/api', taskRouter); // All task routes under `/api`
+app.use('/api/tasks', taskRouter); // All task routes under `/api`
 
 // Connect to MongoDB and start the server
 mongoose

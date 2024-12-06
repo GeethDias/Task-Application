@@ -6,11 +6,12 @@ const App = () => {
   return (
     <Router>
       <nav>
-        <Link to="/">Task List</Link> | <Link to="/create">Create Task</Link>
+        <Link to="/">Task List</Link> | <Link to="/create-tasks">Create Task</Link>
+        {/*methana dena path eka thama browser eke visible wenne */}
       </nav>
       <Routes>
         <Route path="/" element={<TaskList />} />
-        <Route path="/create" element={<CreateTask />} />
+        <Route path="/create-tasks" element={<CreateTask />} />
       </Routes>
     </Router>
   );
