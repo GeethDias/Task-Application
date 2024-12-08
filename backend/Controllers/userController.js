@@ -10,6 +10,7 @@ const createToken = (id) => {
 // User Login
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
+  const user = await User.findOne({ username });
 
   try {
     // Check if the user exists
