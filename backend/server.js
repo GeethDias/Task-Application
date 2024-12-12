@@ -1,10 +1,10 @@
-require('dotenv').config();
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const taskRouter = require('./Routes/taskRoutes');
-const userRouter = require('./Routes/userRoutes');
+const userRouter = require('./Routes/userRoutes'); // Import user routes
+
+require('dotenv').config();
 
 const app = express();
 
@@ -12,14 +12,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Log requests
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
 
 // Register routes
-app.use('/api/tasks', taskRouter); // All task routes under `/api`
-app.use('/api/user', userRouter);
+app.use('/api/tasks', taskRouter);
+app.use('/api/users', userRouter); // Register user routes
 
 // Connect to MongoDB and start the server
 mongoose
@@ -30,5 +31,5 @@ mongoose
     });
   })
   .catch((error) => {
-    console.log(error);
+    console.error(error);
   });
