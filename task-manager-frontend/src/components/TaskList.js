@@ -6,16 +6,18 @@ const TaskList = () => {
   const [error, setError] = useState(null);
 
   const fetchTasks = async () => {
-    setError(null);
+    const token = localStorage.getItem("authToken");
+  
     try {
       const response = await axios.get("http://localhost:5000/api/tasks", {
-
+        headers: { Authorization: `Bearer ${token}` },
       });
       setTasks(response.data);
     } catch (error) {
       setError(error.response?.data?.error || "Failed to fetch tasks.");
     }
   };
+  
 
   const handleDelete = async (id) => {
     setError(null);

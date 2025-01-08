@@ -10,7 +10,14 @@ const CreateTask = ({ fetchTasks }) => {
     e.preventDefault();
     setError(null); // Clear previous errors
     try {
-      await axios.post("http://localhost:5000/api/tasks/create-tasks", { EmployementID, Content });
+      const token = localStorage.getItem("authToken"); // Get token from localStorage
+
+      await axios.post(
+        "http://localhost:5000/api/tasks/create-tasks",
+        { EmployementID, Content },
+        { headers: { Authorization: `Bearer ${token}` } } // Include token
+      );
+      
       alert("Task Created Successfully!");
       fetchTasks && fetchTasks(); // Call fetchTasks if provided
       setEmployementID("");
